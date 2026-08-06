@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro | Agenda de Contatos</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/login.css" />
+    <script src="/js/validateDate.js" defer></script>
+    <script src="/js/validatePassword.js" defer></script>
+    <script src="/js/showPassword.js" defer></script>
+    <script src="/js/register.js" defer></script>
+  </head>
+  <body>
+    <%- include('./partials/page-header.ejs') %>
+    <main>
+      <section class="form">
+        <header class="form-header">
+          <div class="form-icon">
+            <span class="material-symbols-outlined"> person_add </span>
+          </div>
+          <h2 class="title">Criar conta</h2>
+          <p>Preencha os dados para se cadastrar</p>
+        </header>
+        <form action="/register" method="post" id="form">
+          <fieldset>
+            <div class="field">
+              <label class="label" for="fullname">Nome completo</label>
+              <div class="input">
+                <span class="material-symbols-outlined field-icon">
+                  person
+                </span>
+                <input
+                  type="text"
+                  name="fullname"
+                  id="fullname"
+                  placeholder="Seu nome completo"
+                  value="<%= error? data.fullname : ''%>"
+                  required
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="date_of_birth"
+                >Data de nascimento</label
+              >
+              <div class="input input-padding">
+                <span class="material-symbols-outlined field-icon">
+                  calendar_month
+                </span>
+                <input
+                  type="date"
+                  name="date_of_birth"
+                  id="date_of_birth"
+                  value="<%= error? (new Date(data.date_of_birth)).toISOString().split('T')[0].replace('/', '-') : ''%>"
+                  required
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="gender">Gênero</label>
+              <div class="input input-padding">
+                <span class="material-symbols-outlined field-icon">
+                  group
+                </span>
+                <select name="gender" id="gender">
+                  <option value="none" selected>Prefiro não informar</option>
+                  <option value="male">Masculino</option>
+                  <option value="female">Feminino</option>
+                  <option value="other">Outro</option>
+                </select>
+              </div>
+            </div>
+            <div class="field <%= error? 'error' : ''%>">
+              <label class="label" for="email">E-mail</label>
+              <div class="input">
+                <span class="material-symbols-outlined field-icon"> mail </span>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="seu@email.com"
+                  value="<%= error? data.email : ''%>"
+                  required
+                />
+              </div>
+              <span class="warning"><%= error? error.message : ''%></span>
+            </div>
+            <div class="field">
+              <label class="label" for="password"
+                >Senha (mínimo de 8 caracteres)</label
+              >
+              <div class="input">
+                <span class="material-symbols-outlined field-icon"> lock </span>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  minlength="8"
+                  placeholder="Sua senha"
+                  required
+                />
+                <span
+                  class="material-symbols-outlined field-icon"
+                  id="show-password"
+                >
+                  visibility
+                </span>
+              </div>
+              <span class="password-strength-indicator"></span>
+            </div>
+          </fieldset>
+          <button class="btn" type="submit">Criar conta</button>
+        </form>
+        <div class="division">
+          <div class="line"></div>
+          <span>ou</span>
+          <div class="line"></div>
+        </div>
+        <footer class="form-footer">
+          <p>
+            Já tem uma conta?
+            <a class="link" href="/login">Fazer login</a>
+          </p>
+        </footer>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>

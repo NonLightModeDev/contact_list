@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Agenda de Contatos</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/login.css" />
+    <script src="/js/showPassword.js" defer></script>
+  </head>
+  <body>
+    <%- include('./partials/page-header.ejs') %>
+    <main>
+      <section class="form">
+        <header class="form-header">
+          <div class="form-icon">
+            <span class="material-symbols-outlined"> lock </span>
+          </div>
+          <h2 class="title">Bem-vindo(a)</h2>
+          <p>Faça login para acessar sua conta</p>
+        </header>
+        <form action="">
+          <fieldset>
+            <div class="field">
+              <label class="label" for="email">E-mail</label>
+              <div class="input">
+                <span class="material-symbols-outlined field-icon"> mail </span>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="seu@email.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="password">Senha</label>
+              <div class="input">
+                <span class="material-symbols-outlined field-icon"> lock </span>
+                <input type="password" name="password" id="password" placeholder="Sua senha" required/>
+                <span
+                  class="material-symbols-outlined field-icon"
+                  id="show-password"
+                >
+                  visibility
+                </span>
+              </div>
+            </div>
+          </fieldset>
+          <button class="btn" type="submit">Entrar</button>
+        </form>
+        <div class="division">
+          <div class="line"></div>
+          <span>ou</span>
+          <div class="line"></div>
+        </div>
+        <footer class="form-footer">
+          <p>
+            Não tem uma conta?
+            <a class="link" href="/register">Cadastre-se</a>
+          </p>
+        </footer>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
