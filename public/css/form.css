@@ -61,7 +61,7 @@
 }
 
 .input {
-  height: 2rem;
+  height: 2.3rem;
   display: flex;
   align-items: center;
   border: 1px solid var(--border-color-1);
@@ -75,6 +75,7 @@
 
 .input input,
 .input select {
+  font-size: 1rem;
   height: 100%;
   width: 100%;
   border: none;
@@ -125,32 +126,8 @@
   font-size: 0.8rem;
 }
 
-.field.error .warning {
+.field.error .warning,
+.form.error .warning {
   display: inline-block;
   color: red;
-}
-
-.password-strength-indicator {
-  display: none;
-  transition: width 0.2s linear;
-}
-
-.field.checking-password .password-strength-indicator {
-  height: 3px;
-  display: inline-block;
-}
-
-.weak-password {
-  background-color: red;
-  width: 25%;
-}
-
-.moderate-strength-password {
-  background-color: blue;
-  width: 55%;
-}
-
-.strong-password {
-  background-color: green;
-  width: 100%;
 }

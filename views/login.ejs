@@ -14,7 +14,7 @@
   <body>
     <%- include('./partials/page-header.ejs') %>
     <main>
-      <section class="form">
+      <section class="form <%= error? 'error' : ''%>">
         <header class="form-header">
           <div class="form-icon">
             <span class="material-symbols-outlined"> lock </span>
@@ -22,9 +22,9 @@
           <h2 class="title">Bem-vindo(a)</h2>
           <p>Faça login para acessar sua conta</p>
         </header>
-        <form action="">
+        <form action="/login" method="post">
           <fieldset>
-            <div class="field">
+            <div class="field <%= error? 'error' : ''%>">
               <label class="label" for="email">E-mail</label>
               <div class="input">
                 <span class="material-symbols-outlined field-icon"> mail </span>
@@ -33,15 +33,23 @@
                   name="email"
                   id="email"
                   placeholder="seu@email.com"
+                  value="<%= error? data.email : ''%>"
                   required
                 />
               </div>
             </div>
-            <div class="field">
+            <div class="field <%= error? 'error' : ''%>">
               <label class="label" for="password">Senha</label>
               <div class="input">
                 <span class="material-symbols-outlined field-icon"> lock </span>
-                <input type="password" name="password" id="password" placeholder="Sua senha" required/>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Sua senha"
+                  value="<%= error? data.password : ''%>"
+                  required
+                />
                 <span
                   class="material-symbols-outlined field-icon"
                   id="show-password"
@@ -50,6 +58,7 @@
                 </span>
               </div>
             </div>
+            <span class="warning"><%= error? error.message : ''%></span>
           </fieldset>
           <button class="btn" type="submit">Entrar</button>
         </form>

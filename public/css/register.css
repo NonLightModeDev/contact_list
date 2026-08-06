@@ -1,0 +1,27 @@
+@import './global.css';
+@import './form.css';
+
+.password-strength-indicator {
+  display: none;
+  transition: width 0.2s linear;
+}
+
+.field.checking-password .password-strength-indicator {
+  height: 3px;
+  display: inline-block;
+}
+
+.weak-password {
+  background-color: red;
+  width: 25%;
+}
+
+.moderate-strength-password {
+  background-color: blue;
+  width: 55%;
+}
+
+.strong-password {
+  background-color: green;
+  width: 100%;
+}

@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/register.css" />
     <script src="/js/validateDate.js" defer></script>
     <script src="/js/validatePassword.js" defer></script>
     <script src="/js/showPassword.js" defer></script>
@@ -17,7 +17,7 @@
   <body>
     <%- include('./partials/page-header.ejs') %>
     <main>
-      <section class="form">
+      <section class="form <%= error? 'error' : ''%>">
         <header class="form-header">
           <div class="form-icon">
             <span class="material-symbols-outlined"> person_add </span>
@@ -25,7 +25,7 @@
           <h2 class="title">Criar conta</h2>
           <p>Preencha os dados para se cadastrar</p>
         </header>
-        <form action="/register" method="post" id="form">
+        <form action="/register" method="post">
           <fieldset>
             <div class="field">
               <label class="label" for="fullname">Nome completo</label>

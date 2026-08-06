@@ -12,6 +12,16 @@ class AuthService {
 
         return await userRepository.create(data)
     }
+
+    async login(data) {
+        const user = await userRepository.findByEmailAndPassword(data.email, data.password)
+
+        if(!user) {
+            throw new NotFoundError('Dados incorretos!')
+        }
+
+        return user
+    }
 }
 
 export default new AuthService()
