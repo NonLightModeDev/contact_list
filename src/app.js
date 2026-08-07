@@ -24,7 +24,7 @@ app.use(session({
     }
 }))
 app.use(routes)
-app.use((err, res, req, next) => {
+app.use((err, req, res, next) => {
     res.sendStatus(500)
 })
 

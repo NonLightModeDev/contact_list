@@ -19,6 +19,9 @@
     --header-bg-color: #1a2534;
     --bg-color-3: #e6ecf9;
     --border-color-1: #dbdde3;
+    --error-color: #ff0000;
+    --delete-color: #f34500;
+    --outline-color: #000;
 }
 
 html {
@@ -40,7 +43,7 @@ body {
     padding: 1.2rem;
 }
 
-.logo-title {
+.logo__title {
     color: var(--logo-title-color);
     font-size: 1.4rem;
 }
@@ -51,13 +54,15 @@ body {
     margin: 0 auto;
 }
 
+.page-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 p {
     color: var(--text-color-1);
     font-size: 1.1rem;
-}
-
-main {
-    padding: 4rem 1rem;
 }
 
 .btn {

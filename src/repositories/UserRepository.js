@@ -17,8 +17,42 @@ class UserRepository {
     return userModel.exists({ email, password })
   }
 
-  findBasicInfoAndContactsById(_id) {
-    return userModel.findOne({ _id }, { fullname: 1, contacts: 1 })
+  findAllContacts(_id) {
+    return userModel.findOne({ _id }, { contacts: 1 })
+  }
+
+  findContact(userId, contactId) {
+    return userModel.findOne(
+      {
+        _id: userId,
+        'contacts._id': contactId
+      },
+      {
+        'contacts.$': 1
+      }
+    )
+  }
+
+  createContact(userId, data) {
+    return userModel.updateOne(
+      { _id: userId },
+      {
+        $push: {
+          contacts: data
+        }
+      }
+    )
+  }
+
+  deleteContact(userId, contactId) {
+    return userModel.updateOne(
+      { _id: userId },
+      {
+        $pull: {
+          contacts: { _id: contactId }
+        }
+      }
+    )
   }
 }
 

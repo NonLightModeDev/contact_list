@@ -8,7 +8,8 @@ class AuthController {
       res.redirect('/')
     } else {
       res.render('login', {
-        error: null
+        error: null,
+        authenticated: false
       })
     }
   }
@@ -18,7 +19,8 @@ class AuthController {
       res.redirect('/')
     } else {
       res.render('register', {
-        error: null
+        error: null,
+        authenticated: false
       })
     }
   }
@@ -33,7 +35,8 @@ class AuthController {
           error: {
             message: e.message
           },
-          data: req.body
+          data: req.body,
+          authenticated: false
         })
       }
     }
@@ -50,7 +53,8 @@ class AuthController {
           error: {
             message: e.message
           },
-          data: req.body
+          data: req.body,
+          authenticated: false
         })
       }
     }
@@ -58,7 +62,7 @@ class AuthController {
 
   logout(req, res, next) {
     req.session.destroy(err => {
-      if(err) {
+      if (err) {
         next(err)
       }
 

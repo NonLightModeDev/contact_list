@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,13 +9,126 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/index.css" />
+    <script src="/js/form.js" defer></script>
+    <script src="/js/index.js" defer></script>
   </head>
   <body>
     <%- include('./partials/page-header.ejs') %>
     <main>
-      <a href="/logout">Logout</a>
-      <%= error? error.message : data %>
+      <section class="my-contacts">
+        <div class="container">
+          <header class="my-contacts__header">
+            <div>
+              <h2 class="title">Meus contatos</h2>
+              <p>Gerencia e mantenha sua lista de contatos organizada.</p>
+            </div>
+            <button class="btn" id="btn-new-contact">
+              <span class="material-symbols-outlined"> add </span>
+              Novo contato
+            </button>
+          </header>
+          <div class="new-contact">
+            <section class="form">
+              <header class="form__header">
+                <h2 class="title">Novo contato</h2>
+              </header>
+              <form class="form__body" action="/contacts" method="post">
+                <fieldset>
+                  <div class="form__field">
+                    <label class="form__label" for="fullname">Nome *</label>
+                    <div class="form__input-wrapper">
+                      <span class="material-symbols-outlined form__field__icon">
+                        person
+                      </span>
+                      <input
+                        type="text"
+                        name="fullname"
+                        id="fullname"
+                        placeholder="Nome completo"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form__field">
+                    <label class="form__label" for="email">E-mail</label>
+                    <div class="form__input-wrapper">
+                      <span class="material-symbols-outlined form__field__icon">
+                        mail
+                      </span>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="exemplo@email.com"
+                      />
+                    </div>
+                  </div>
+                  <div class="form__field">
+                    <label class="form__label" for="email">Telefone *</label>
+                    <div class="form__input-wrapper">
+                      <span class="material-symbols-outlined form__field__icon">
+                        phone
+                      </span>
+                      <input
+                        type="text"
+                        name="telephone"
+                        id="telephone"
+                        placeholder="(xx) xxxxx-xxx"
+                        required
+                      />
+                    </div>
+                  </div>
+                </fieldset>
+                <button class="btn" type="submit">Salvar</button>
+              </form>
+            </section>
+          </div>
+          <div class="my-contacts__body">
+            <div class="my-contacts__body__header grid" aria-hidden="true">
+              <span>Nome</span>
+              <span>E-mail</span>
+              <span>Telefone</span>
+              <span>Ações</span>
+            </div>
+            <ul class="my-contacts__body__list">
+              <% data.contacts.forEach(contact => { %>
+                <li>
+                  <article class="contact grid" id="<%= contact._id %>">
+                    <header class="contact__header">
+                      <div class="contact__avatar-intials">
+                        <span><%= contact.avatar_initials %></span>
+                      </div>
+                      <h3><%= contact.firstname %> <%= contact.lastname%></h3>
+                    </header>
+                    <div class="contact__email">
+                      <span class="hidden">E-mail:</span>
+                      <p><%= contact.email %></p>
+                    </div>
+                    <div class="contact__telephone">
+                      <span class="hidden">Telefone:</span>
+                      <p><%= contact.telephone %></p>
+                    </div>
+                    <footer
+                      class="contact__actions"
+                      aria-label="Ações do contato"
+                    >
+                      <a href="/contacts/<%= contact._id %>">
+                        <span class="material-symbols-outlined">
+                          visibility
+                        </span>
+                      </a>
+                      <button type="button" class="btn-delete-contact" id="<%= contact._id %>">
+                        <span class="material-symbols-outlined"> delete </span>
+                      </button>
+                    </footer>
+                  </article>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+          <footer class="my-contacts__footer"></footer>
+        </div>
+      </section>
     </main>
-    <footer></footer>
   </body>
 </html>

@@ -1,12 +1,16 @@
 @import './global.css';
 @import './form.css';
 
+main {
+    padding: 4rem 1rem;
+}
+
 .password-strength-indicator {
   display: none;
   transition: width 0.2s linear;
 }
 
-.field.checking-password .password-strength-indicator {
+.form__field.checking-password .password-strength-indicator {
   height: 3px;
   display: inline-block;
 }
